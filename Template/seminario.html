@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Listado</title>
+</head>
+<body class="container mt-5">
+    <div class="alert alert-info display-1 text-center">LISTADO</div>
+    {% if seminario %}
+    <table class="table table-striped table-info table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>ID</th>
+                <th>Nombre </th>
+                <th>Telefono</th>
+                <th>Insti</th>
+                <th>Hora/Fecha</th>
+                <th>Estado</th>
+                <th>Observ</th>
+                <th>CRUD</th>
+                <th>CRUD</th>
+                <th>CRUD</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for seminario in seminario %}
+            <tr>
+                <td>{{ seminario.id}}</td>
+                <td>{{ seminario.nombreR}}</td>
+                <td>{{ seminario.telefono}}</td>
+                <td>{{ seminario.institucion}}</td>
+                <td>{{ seminario.fechareserva}}</td>
+                <td>{{ seminario.estado}}</td>
+                <td>{{seminario.observacion}}</td>
+                <td><a href="/actualizarseminario/{{seminario.id}}" class="btn btn-success btn-5m"><i class="bi bi-pencil"></i></a></td>
+                <td><a href="/eliminarseminario/{{seminario.id}}" class="btn btn-danger btn-5m"><i class="bi bi-trash"></i></a></td>
+                <td><a href="/seminario/{{seminario.id}}" class="btn btn-warning btn-5m"><i class="bi bi-1-circle"></i></a></td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encuentran reservas de mesa en el sistema</strong>
+    </div>
+    {% endif %}
+
+    <a href="../" class="btn btn-info">ATRAS</a>
+    <a href="../agregarseminario/" class="btn btn-info float-end">AGREGAR</a>
+    
+</body>
+</html>
